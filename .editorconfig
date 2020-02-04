@@ -1,0 +1,53 @@
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+max_line_length = 80
+
+## BEGIN: MARKDOWN
+[*.md]
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = false
+## END: MARKDOWN
+
+## BEGIN: TOML
+[*.toml]
+indent_style = space
+indent_size = 2
+max_line_length = 100
+## END: TOML
+
+## BEGIN: YAML
+[*.{yml|yaml}]
+indent_style = space
+indent_size = 2
+## END: YAML
+
+## BEGIN: JSON
+[*.json]
+indent_style = space
+indent_size = 2
+## END: JSON
+
+## BEGIN: SHELL
+[*.{sh|shell|bash|zsh]
+indent_style = space
+indent_size = 2
+## END: SHELL
+
+## BEGIN: MAKEFILE
+[Makefile]
+indent_style = tab
+indent_size = 4
+## END: MAKEFILE
+
+## BEGIN: CUSTOM_BLOCK
+[layouts/shortcodes/*.html]
+insert_final_newline = false
+## END: CUSTOM_BLOCK
