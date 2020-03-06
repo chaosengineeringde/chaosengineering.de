@@ -1,0 +1,148 @@
+# https://github.com/netlify/netlify-cms/issues/513
+
+backend:
+  name: github
+  repo: chaosengineeringde/chaosengineering.de
+  commit_messages:
+    create: "docs({{collection}}): create '{{slug}}'"
+    update: "docs({{collection}}): update '{{slug}}'"
+    delete: "docs({{collection}}): delete '{{slug}}'"
+    uploadMedia: "docs(media): upload '{{path}}'"
+    deleteMedia: "docs(media): delete '{{path}}'"
+
+site_url: https://www.chaosengineering.de/
+locale: 'en'
+publish_mode: editorial_workflow
+media_folder: "images/uploads" # Media files will be stored in the repo under images/uploads
+
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
+
+collections:
+  - name: "authors"
+    label: "Authors"
+    label_singular: "Author"
+    folder: "content/de/authors/"
+    path: "{{slug}}/_index"
+    slug: "{{fields.authors.0}}"
+    identifier_field: "name"
+    media_folder: ""
+    public_folder: ""
+    create: true
+    fields:
+      - name: "name"
+        label: "Author Fullname"
+        widget: "string"
+      - name: "authors"
+        label: "Author Fullname lowercase without witespaces"
+        widget: "list"
+        allow_add: false
+      - name: "superuser"
+        label: "Is this the primary user of the site?"
+        widget: "boolean"
+        default: false
+        required: false
+      - name: "role"
+        label: "Role/position"
+        widget: "string"
+      - name: "organizations"
+        label: "Organizations/Affiliations"
+        widget: "object"
+        fields:
+          - name: "name"
+            label: "Organization Name"
+            widget: "string"
+          - name: "url"
+            label: "Website"
+            widget: "string"
+      - name: bio
+        label: "Short bio (displayed in user profile at end of posts)"
+        widget: "string"
+      - name: "interests"
+        label: "Interests - Comma separated"
+        widget: "list"
+      - name: "avatar"
+        label: "Avatar"
+        widget: "image"
+        default: "avatar.jpg"
+        required: false
+      - name: "body"
+        label: "Body"
+        widget: "markdown"
+
+  - name: "posts"
+    label: "Blog Posts"
+    label_singular: "Blog Post"
+    folder: "content/de/post/"
+    path: "{{year}}-{{month}}-{{day}}-{{slug}}/index"
+    media_folder: ""
+    public_folder: ""
+    create: true
+    fields:
+      - name: "title"
+        label: "Title"
+        widget: "string"
+      - name: "subtitle"
+        label: "Subtitle"
+        widget: "string"
+      - name: "summary"
+        label: "Summary"
+        widget: "string"
+        required: false
+      - name: "authors"
+        label: "Authors"
+        widget: "relation"
+        collection: "authors"
+        searchFields: ["name", "authors.0"]
+        valueField: "authors.0"
+        displayFields: ["name", "authors.0"]
+        multiple: true
+      - name: "tags"
+        label: "Tags - Comma separated"
+        widget: "list"
+        required: false
+      - name: "date"
+        label: "Publish Date"
+        widget: "datetime"
+      - name: "lastmod"
+        label: "Last modified"
+        widget: "datetime"
+      - name: "featured"
+        label: "Featured"
+        widget: "boolean"
+        default: false
+      - name: "draft"
+        label: "Draft"
+        widget: "boolean"
+        default: true
+      - name: "image"
+        label: "Image"
+        widget: "object"
+        required: false
+        fields:
+          - name: "file"
+            label: "File"
+            widget: "image"
+            default: "featured.png"
+            required: false
+            # media_library:
+            #   config:
+            #     max_file_size: 512000
+          - name: "caption"
+            label: "caption"
+            widget: "string"
+            required: false
+          - name: "focal_point"
+            label: "Focal Point"
+            required: false
+            widget: "select"
+            options: ["Smart", "Center", "TopLeft", "Top", "TopRight", "Left", "Right", "BottomLeft", "Bottom", "BottomRight"]
+          - name: "preview_only"
+            label: "Preview Only"
+            widget: "boolean"
+            default: false
+      - name: "body"
+        label: "Body"
+        widget: "markdown"
