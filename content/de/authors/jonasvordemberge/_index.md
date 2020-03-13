@@ -6,7 +6,7 @@ superuser: false
 role: Implementation Lead
 organizations:
   name: DB Vertrieb GmbH
-  url: 'https://www.bahn.de'
+  url: www.bahn.de
 bio: Doing computer stuff since 1995. Lovin' it so far.
 interests:
   - Chaos Engineering
