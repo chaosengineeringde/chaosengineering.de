@@ -7,3 +7,6 @@ echo "Generating .env file"
 cp -av "${TEMPLATES_DIR}/dotenv" .env
 echo "Activate git repo commit template"
 git config commit.template "$(pwd)/.templates/commit.template"
+
+git submodule init
+git submodule update
