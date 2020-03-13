@@ -100,8 +100,30 @@ collections:
         displayFields: ["name", "authors.0"]
         multiple: true
       - name: "tags"
-        label: "Tags - Comma separated"
-        widget: "list"
+        label: "Tags"
+        widget: "relation"
+        collection: "tags"
+        searchFields: ["name"]
+        valueField: "name"
+        displayFields: ["name"]
+        multiple: true
+      - name: "categories"
+        label: "Categories"
+        widget: "relation"
+        collection: "categories"
+        searchFields: ["name"]
+        valueField: "name"
+        displayFields: ["name"]
+        multiple: false
+        required: false
+      - name: "editions"
+        label: "Editions"
+        widget: "relation"
+        collection: "editions"
+        searchFields: ["name"]
+        valueField: "name"
+        displayFields: ["name"]
+        multiple: false
         required: false
       - name: "date"
         label: "Publish Date"
@@ -146,3 +168,39 @@ collections:
       - name: "body"
         label: "Body"
         widget: "markdown"
+
+  - name: "tags"
+    label: "Tags"
+    label_singular: "Tag"
+    folder: "content/en/taxonomies/tag"
+    identifier_field: "name"
+    media_folder: ""
+    public_folder: ""
+    create: true
+    fields:
+      - name: "name"
+        label: "Tag"
+
+  - name: "categories"
+    label: "Categories"
+    label_singular: "Category"
+    folder: "content/en/taxonomies/category"
+    identifier_field: "name"
+    media_folder: ""
+    public_folder: ""
+    create: true
+    fields:
+      - name: "name"
+        label: "Category"
+
+  - name: "editions"
+    label: "Editions"
+    label_singular: "Edition"
+    folder: "content/en/taxonomies/edition"
+    identifier_field: "name"
+    media_folder: ""
+    public_folder: ""
+    create: true
+    fields:
+      - name: "name"
+        label: "Edition"
