@@ -49,7 +49,7 @@ collections:
         widget: "string"
       - name: "organizations"
         label: "Organizations/Affiliations"
-        widget: "object"
+        widget: "list"
         fields:
           - name: "name"
             label: "Organization Name"
