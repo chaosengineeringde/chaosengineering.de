@@ -38,7 +38,17 @@ The repository uses/follows the following standards/conventions:
 
 ## Build / Extend / Customize
 
-tbd
+To serve the page locally:
+
+```shell
+hugo serve
+```
+
+then open localhost:1313 in the browser.
+
+IMPORTANT!
+You need the extended version of hugo, you can download it here: https://github.com/gohugoio/hugo/releases
+
 
 ## Resources
 
