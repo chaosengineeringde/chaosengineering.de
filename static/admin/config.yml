@@ -123,7 +123,7 @@ collections:
         searchFields: ["name"]
         valueField: "name"
         displayFields: ["name"]
-        multiple: false
+        multiple: true
         required: false
       - name: "editions"
         label: "Editions"
