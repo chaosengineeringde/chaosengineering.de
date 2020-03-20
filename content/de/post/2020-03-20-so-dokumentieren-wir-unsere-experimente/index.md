@@ -5,7 +5,8 @@ authors:
   - jonasvordemberge
 tags:
   - gamedays
-categories: Knowledgebase
+categories: 
+  - Knowledgebase
 date: 2020-03-20T13:47:49.912Z
 lastmod: 2020-03-20T13:47:49.972Z
 featured: false
